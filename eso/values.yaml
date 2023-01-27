@@ -99,7 +99,10 @@ serviceAccount:
   # -- Automounts the service account token in all containers of the pod
   automount: true
   # -- Annotations to add to the service account.
-  annotations: {}
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::222073541442:role/BoundedKubernetesExternalSecrets_sboxapp
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","kind":"ServiceAccount","metadata":{"annotations":{"eks.amazonaws.com/role-arn":"arn:aws:iam::222073541442:role/BoundedKubernetesExternalSecrets_sboxapp"},"labels":{"app.kubernetes.io/instance":"external-secrets","app.kubernetes.io/managed-by":"Helm","app.kubernetes.io/name":"external-secrets","helm.sh/chart":"external-secrets-0.7.2","sa-digital.cicd.parents":"external-secrets-sboxapp"},"name":"external-secrets","namespace":"external-secrets"}}
   # -- Extra Labels to add to the service account.
   extraLabels: {}
   # -- The name of the service account to use.
